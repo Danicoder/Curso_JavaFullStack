@@ -1,7 +1,7 @@
 package Java1;
 
 import java.util.Scanner;
-//NNN
+
 public class Exercise1 {
 	
 	//1. Crea un programa que diga el resultado de sumar 36 y 27.
@@ -73,15 +73,20 @@ public class Exercise1 {
 		int C = 3;
 		int D = 4;
 		
-		A= (A != D) ? D : A;
-		B= (B != C) ? C : B;
-		C= (C != A) ? A : C;
-		D= (D != B) ? B : D;
+		int auxA = A;
+		int auxB = B;
+		int auxC = C;
+		int auxD = D;
 		
-		System.out.println("B toma el valor de C -> B = " + B);
-		System.out.println("C toma el valor de A -> C = " + C);
-		System.out.println("A tome el valor de D -> A = " + A);
-		System.out.println("D tome el valor de B -> D = " + D);
+		B = auxC;
+		C = auxA;
+		D = auxB;
+		A = auxD;
+		
+		System.out.println("B toma el valor de C -> B = " + auxB);
+		System.out.println("C toma el valor de A -> C = " + auxC);
+		System.out.println("A tome el valor de D -> A = " + auxA);
+		System.out.println("D tome el valor de B -> D = " + auxD);
 	}
 	/*7. Crea un programa donde definimos 2 variables de tipo carácter. Muestra la posición de cada carácter
 		en la tabla unicode y la diferencia entre ambos caracteres. Si los caracteres son ‘b’ y ‘k’, la salida
@@ -97,14 +102,72 @@ public class Exercise1 {
 		solución correcta.*/
 	public static void exercise8() {
 		int a = 5;int b; int c;
-		b = ++a;
-		c = a++;
+		b = ++a;//incrementa e imprime 6
+		c = a++;//imprime 6 y  luego incrementa
 		b = b*5;
-		a = a*2;
+		a = a*2;//incrementa a 7 y multiplica
 		
-		System.out.println( a + "\n" + b+ "\n" + c);
+		System.out.println( "a: " + a + "\n" + "b: " + b+ "\n" + "c: " + c);
 	}
-	//prueba guardar cambios
+	/*9. Pregúntale al usuario su nombre y muestra un mensaje saludándole con su nombre*/
+	public static void exercise9() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime tu nombre ");
+		String name = sc.nextLine();
+		System.out.println("Hola"+name);
+	}
+	/*10. Escribe un programa que lee un número entero por teclado y obtiene y muestra por pantalla el doble y
+	el triple de ese número. */
+	public static void exercise10() {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime un número: ");
+		float number = sc.nextFloat();
+		
+		number *= 2;
+		System.out.println("El doble del número es: "+number);
+		number *= 3;
+		System.out.println("El triple del número es: "+number);
+	}
+	/*11. Programa que lea una cantidad de grados centígrados y la pase a grados Fahrenheit. La fórmula
+	correspondiente para pasar de grados centígrados a fahrenheit es:*/
+	public static void exercise11() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("¿A cúantos grados centígrados estas: ?");
+		int Grados = sc.nextInt();
+		double Fahrenheit = 32 + (9 * ((double)Grados / 5));
+		System.out.println("Eso equivale a tener: "+Fahrenheit+" ºF");
+	}
+	/*12. Programa que lea un número entero de 3 cifras y muestre por separado las cifras del número.*/
+	public static void exercise12() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime 3 cifras");
+		int num = sc.nextInt();
+		int unidades = num % 10;
+		int num2 = num / 10; 
+		int decenas = num2 % 10; 
+		int centenas = num2 / 10;
+		
+		System.out.println("Centenas: " + centenas + ", decenas: " + decenas + ", unidades: " + unidades);
+	}
+	/*13. Programa que pida por teclado la fecha de nacimiento de una persona (dia, mes, año) y calcule su
+	número de la suerte. El número de la suerte se calcula sumando el día, mes y año de la fecha de
+	nacimiento y a continuación sumando las cifras obtenidas en la suma. */
+	public static void exercise13() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime tu fecha de nacimiento: (dia, mes, año)");
+		int dia = sc.nextInt();
+		int mes = sc.nextInt();
+		int año = sc.nextInt();
+
+		int suma = dia + mes + año;
+		int num1 = suma % 10;
+		int num2 = (suma / 10) % 10;
+		int num3 = (suma / 10) % 10;
+		int num4 = num /10;
+		
+		System.out.println("Tú número de la suerte es: " + ());
+	}
 	public static void main(String[] args) {
 		
 		/*exercise1();
@@ -113,7 +176,12 @@ public class Exercise1 {
 		exercise4();
 		exercise5();
 		exercise6();
-		exercise7();*/
+		exercise7();
 		exercise8();
+		exercise9();
+		exercise10();
+		exercise11();
+		exercise12();*/
+		exercise13();
 	}
 }
