@@ -164,9 +164,9 @@ public class Exercise1 {
 		int num1 = suma % 10;
 		int num2 = (suma / 10) % 10;
 		int num3 = (suma / 10) % 10;
-		int num4 = num /10;
+		//int num4 = num /10;
 		
-		System.out.println("Tú número de la suerte es: " + ());
+		//System.out.println("Tú número de la suerte es: " + ());
 	}
 	public static void main(String[] args) {
 		
