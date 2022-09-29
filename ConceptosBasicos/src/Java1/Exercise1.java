@@ -176,7 +176,7 @@ public class Exercise1 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Dime tu edad: ");
 		int edad = sc.nextInt();
-		System.out.println("Dentro de 15 años tendras: "+(edad+15));
+		System.out.println("Dentro de 15 años tendras: "+(edad+15)+" años");
 	}
 	/*15. Pregunta al usuario el nombre de 3 productos con sus respectivos precios. Debes mostrar dichos datos
 		formateados por la consola. El nombre tendrá 15 caracteres, el precio 12 (con 2 decimales) y
