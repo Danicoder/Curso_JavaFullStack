@@ -1,6 +1,5 @@
 package Estructuras;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Condicionales {
@@ -227,50 +226,47 @@ public class Condicionales {
 	antes de hacer la operación.*/
 	
 	public static void exercise11(){
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Dime el primer número");
-		double num1 = sc.nextDouble();
-		System.out.println("Dime el segundo número");
-		double num2 = sc.nextDouble();
-		if(num2 != 0) { 		
-			System.out.println("¿Qué tipo de operación desea realizar?\n");
-			System.out.println(" 1.Sumar \n 2.Restar \n 3.Multiplicar \n 4.Dividir");
-			int option = sc.nextInt();
+		char continua;
+		do {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Dime el primer número");
+			double num1 = sc.nextDouble();
+			System.out.println("Dime el segundo número");
+			double num2 = sc.nextDouble();
 			
-			boolean seguir = true;
-			while(seguir) {
-				switch (option) {
-				case 1:
-					System.out.println("La suma es: "+(num1 + num2));
-					break;
-				case 2:
-					System.out.println("La resta es: "+(num1 - num2));
-					break;
-				case 3:
-					System.out.println("La multiplicaciíon es: "+(num1 * num2));
-					break;
-				case 4:
-					System.out.println("La división es: "+(num1 / num2));
-					break;
-				default:
-					System.out.println("Haz introducido un núemro no válido");
-					break;
-				}
+			if(num2 != 0) { 		
 				
-				System.out.print("Deseas continuar: (s / n) ");
-				Scanner opc = new Scanner(System.in);
-				String response = opc.nextLine().toLowerCase();
-				if(response == "n") {seguir = false;}
-				else if(response == "s") {seguir = true;}
-				else {
-					System.out.println("Respuesta erronea");
-					break;
-				}
+				
+					System.out.println("¿Qué tipo de operación desea realizar?\n");
+					System.out.println(" 1.Sumar \n 2.Restar \n 3.Multiplicar \n 4.Dividir \n 5. Continuar calculando");
+					int option = sc.nextInt();
+					
+					switch (option) {
+					case 1:
+						System.out.println("La suma es: "+(num1 + num2));
+						break;
+					case 2:
+						System.out.println("La resta es: "+(num1 - num2));
+						break;
+					case 3:
+						System.out.println("La multiplicaciíon es: "+(num1 * num2));
+						break;
+					case 4:
+						System.out.println("La división es: "+(num1 / num2));
+						break;
+					default:
+						System.out.println("Haz introducido un núemro no válido");
+						break;
+					}
 			}
-		}
-		else {
-			System.out.println("El divisior no debe ser cero");
-		}
+			else {
+				System.out.println("El divisior no debe ser cero");
+			}
+			System.out.print("Deseas continuar : (s / n) ");
+			Scanner res = new Scanner(System.in);
+			continua = res.next().charAt(0);
+		}while(continua != 'n' && continua != 'N');
+		System.out.println("¡ Buena suerte, chao !");
 	}
 	/*12. Crea una variable con el precio de una entrada que inicialmente valga 50. Pregunta al usuario
 		  su edad.
@@ -417,7 +413,7 @@ public class Condicionales {
 			}
 		}
 	}
-		public static void main(String[] args) {
+		public static void main(String[] args){
 		//exercise2();
 		//exercise3();
 		//exercise4();
@@ -427,7 +423,7 @@ public class Condicionales {
 		//exercise8();
 		//exercise9();
 		//exercise10();
-		//exercise11();
+		exercise11();
 		//exercise12();
 		//exercise13();
 		//exercise14();
@@ -438,7 +434,7 @@ public class Condicionales {
 		//exercise19();
 		//exercise20();
 		//exercise21();
-		exercise22();
+		//exercise22();
 	
 	}
 }
