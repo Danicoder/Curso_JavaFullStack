@@ -335,12 +335,13 @@ public class Condicionales {
 	public static void exercise15() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Dime un número: ");
-		double num = sc.nextDouble();
-		
+		int num = sc.nextInt();
+		int cifras =0;
 		while(num != 0){
-			num += num / 10;
-			System.out.println("El número tiene "+ num + " cifras");
+			num /= 10;
+			cifras++;
 		}
+		System.out.println("El número tiene "+ cifras +" cifras");
 	}
 	/*16. Pide al usuario un número y dibuja una línea con tantos asteriscos como el número introducido.*/
 	public static void exercise16() {
@@ -393,7 +394,7 @@ public class Condicionales {
 			else if(num < 0){
 				continue;  //vuelve al comienzo del while
 			}
-			
+			//continue saltaría este paso sí lo hubiera
 		}
 	}
 	/*21. Pide al usuario un número y dile los divisores de dicho número (resto da cero).*/
@@ -405,6 +406,14 @@ public class Condicionales {
 		for (int i = 0; i < num / 2; i++) {
 			if((num % i) == 0) {
 				System.out.println("Los divisores de dicho número son " + i);
+			}
+		}
+	}
+	/*22. Escribe en una misma línea los números del 1 al 9, 5 veces:*/
+	public static void exercise22() {
+		for (int i = 1; i <= 9; i++) {
+			for (int j = 1; j <= 9; j++) {
+				System.out.print(j);
 			}
 		}
 	}
@@ -422,13 +431,14 @@ public class Condicionales {
 		//exercise12();
 		//exercise13();
 		//exercise14();
-		//exercise15(); //rectificar
+		//exercise15();
 		//exercise16();
 		//exercise17();
 		//exercise18();
 		//exercise19();
-		exercise20();
+		//exercise20();
 		//exercise21();
+		exercise22();
 	
 	}
 }
