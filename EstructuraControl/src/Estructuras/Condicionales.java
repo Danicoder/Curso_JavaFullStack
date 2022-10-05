@@ -280,25 +280,29 @@ public class Condicionales {
 		c. Si está jubilado se le hará un descuento del 75%.
 		d. Finalmente muéstrale el precio que tiene que pagar por la entrada*/
 	public static void exercise12() {
+		final int mayorEdad = 18;
 		final int price = 50;
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Dime tu edad: ");
 		int edad = sc.nextInt();
-		if(edad < 18) {
-			System.out.println("El precio final al aportarte el 25% de descuento es: " + (price - (price * 0.25)));
+		//debemos ponerlo sí vamos hacer más de una entrada por teclado o consola después de un int
+		sc.nextLine(); //tanbién se podría transformar en entero int edad int edad = Integer.parseInt(sc.nextLine());
+		String socio;
+		if(edad < mayorEdad) {
+			System.out.println("El precio final al aportarte el 25% de descuento es: " + (price * (1-0.25)));
 		}
-		else if(edad > 18 && edad < 65) {
+		else if(edad >= mayorEdad && edad < 65) {
 			System.out.println("Es usted socio: (si/no)");
-			String socio = sc.nextLine().toLowerCase();
-			if(socio == "si") {
-				System.out.println("Aplicando un descuento de 40% el precio a pagar es de: "+(price - (price * 0.40)));
+			socio = sc.nextLine();
+			if(socio.equals("si")) {
+				System.out.println("Aplicando un descuento de 40% el precio a pagar es de: "+(price * (1-0.40)));
 			}
 			else {
 				System.out.println("El precio a pagar es de: "+ price);
 			}
 		}
 		else if(edad >= 65) {
-			System.out.println("Aplicando un descuento de 75% el precio a pagar es de: "+(price - (price * 0.75)));
+			System.out.println("Aplicando un descuento de 75% el precio a pagar es de: "+(price * (1-0.75)));
 		}
 	}
 	/*13. Muestra por pantalla los números de 20 al 1 usando un bucle while, y después hazlo otra vez
@@ -315,29 +319,96 @@ public class Condicionales {
 	do..while.*/
 	public static void exercise14() {
 		int var = 0;
+		int num;
 		do {
 			System.out.println("Dime un número: \n");
 			Scanner sc = new Scanner(System.in);
-			int num = sc.nextInt();
+			num = sc.nextInt();
 			var += num;
 			if(num == 0) break;
 			System.out.println("Resultado: "+ var);
 		}
-		while(var != 0);
+		while(num != 0);
 	}
 	/*15. Pide al usuario un número y calcula cuantas cifras tiene dicho número. Para ello puedes dividir
 	el número entre 10 hasta que el resultado sea cero.*/
 	public static void exercise15() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Dime un número: ");
-		int num = sc.nextInt();
+		double num = sc.nextDouble();
 		
-		do {
+		while(num != 0){
 			num += num / 10;
 			System.out.println("El número tiene "+ num + " cifras");
-		}while(num != 0);
+		}
 	}
-	public static void main(String[] args) {
+	/*16. Pide al usuario un número y dibuja una línea con tantos asteriscos como el número introducido.*/
+	public static void exercise16() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		int num = sc.nextInt();
+
+		for (int j = 0; j < num; j++) {
+			System.out.print(" * ");
+		}
+	}
+	/*17. Muestra los números del 1 al 30 menos los divisibles entre 3 (resto da cero)*/
+	public static void exercise17() {
+		for (int i = 1; i <= 30; i++) {
+			if((i % 3) > 0)
+			System.out.println(i);
+		}
+	}
+	/*18. Muestra de 5 en 5, los números del 0 al 100.*/
+	public static void exercise18() {
+		for (int i = 0; i < 100; i+=5) {
+			System.out.print(i+5+" ");
+		}
+	}
+	/*19. Pregunta al usuario un número y muestra del 1 hasta ese número, en una misma línea,
+	separados por comas (debes comprobar cuando es el último y no poner una coma en ese
+	caso).*/
+	public static void exercise19() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		int num = sc.nextInt();
+		for (int i = 1; i <= num; i++) {
+			System.out.print(((i != num) ? i+",": i+""));
+		}
+	}
+	/*20. Repite el ejercicio 2 pero con un bucle infinito (la condición nunca será falsa). En este caso
+	tendrás que comprobar dentro del bucle cuando el usuario ha introducido un cero para salir
+	(break). Si el usuario introduce un número negativo no lo sumes (usa continue para saltarte la
+	suma).*/
+	public static void exercise20() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		int num = sc.nextInt();
+		int i = 1;
+		sc.nextLine();
+		while (true) {
+			System.out.print(i+",");
+			i++;
+			if(num == 0) break;
+			else if(num < 0){
+				continue;  //vuelve al comienzo del while
+			}
+			
+		}
+	}
+	/*21. Pide al usuario un número y dile los divisores de dicho número (resto da cero).*/
+	public static void exercise21() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		double num = sc.nextDouble();
+		
+		for (int i = 0; i < num / 2; i++) {
+			if((num % i) == 0) {
+				System.out.println("Los divisores de dicho número son " + i);
+			}
+		}
+	}
+		public static void main(String[] args) {
 		//exercise2();
 		//exercise3();
 		//exercise4();
@@ -351,8 +422,13 @@ public class Condicionales {
 		//exercise12();
 		//exercise13();
 		//exercise14();
-		exercise15();
-
+		//exercise15(); //rectificar
+		//exercise16();
+		//exercise17();
+		//exercise18();
+		//exercise19();
+		exercise20();
+		//exercise21();
+	
 	}
-
 }
