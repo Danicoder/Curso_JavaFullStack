@@ -220,14 +220,123 @@ public class Condicionales {
 			break;
 		}
 	}
+	/*11. Pide al usuario 2 números. Después muestra al usuario un menú con las siguientes opciones:
+	1. Sumar, 2. Restar, 3. Multiplicar, 4. Dividir. Comprueba la opción elegida, haz la operación y
+	muestra el resultado de la misma.
+	Si la operación elegida es la división, comprueba que el segundo número (divisor) no sea cero
+	antes de hacer la operación.*/
+	
+	public static void exercise11(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dime el primer número");
+		double num1 = sc.nextDouble();
+		System.out.println("Dime el segundo número");
+		double num2 = sc.nextDouble();
+		if(num2 != 0) { 		
+			System.out.println("¿Qué tipo de operación desea realizar?\n");
+			System.out.println(" 1.Sumar \n 2.Restar \n 3.Multiplicar \n 4.Dividir");
+			int option = sc.nextInt();
+			
+			boolean seguir = true;
+			while(seguir) {
+				switch (option) {
+				case 1:
+					System.out.println("La suma es: "+(num1 + num2));
+					break;
+				case 2:
+					System.out.println("La resta es: "+(num1 - num2));
+					break;
+				case 3:
+					System.out.println("La multiplicaciíon es: "+(num1 * num2));
+					break;
+				case 4:
+					System.out.println("La división es: "+(num1 / num2));
+					break;
+				default:
+					System.out.println("Haz introducido un núemro no válido");
+					break;
+				}
+				
+				System.out.print("Deseas continuar: (s / n) ");
+				Scanner opc = new Scanner(System.in);
+				String response = opc.nextLine().toLowerCase();
+				if(response == "n") {seguir = false;}
+				else if(response == "s") {seguir = true;}
+				else {
+					System.out.println("Respuesta erronea");
+					break;
+				}
+			}
+		}
+		else {
+			System.out.println("El divisior no debe ser cero");
+		}
+	}
+	/*12. Crea una variable con el precio de una entrada que inicialmente valga 50. Pregunta al usuario
+		  su edad.
+		a. Si es menor de edad se le hará un descuento del 25% en la entrada.
+		b. Si es mayor de edad pero no está jubilado (65 años), pregúntale si es socio. Si el usuario
+		responde “sí” hazle un descuento del 40%.
+		c. Si está jubilado se le hará un descuento del 75%.
+		d. Finalmente muéstrale el precio que tiene que pagar por la entrada*/
+	public static void exercise12() {
+		final int price = 50;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime tu edad: ");
+		int edad = sc.nextInt();
+		if(edad < 18) {
+			System.out.println("El precio final al aportarte el 25% de descuento es: " + (price - (price * 0.25)));
+		}
+		else if(edad > 18 && edad < 65) {
+			System.out.println("Es usted socio: (si/no)");
+			String socio = sc.nextLine().toLowerCase();
+			if(socio == "si") {
+				System.out.println("Aplicando un descuento de 40% el precio a pagar es de: "+(price - (price * 0.40)));
+			}
+			else {
+				System.out.println("El precio a pagar es de: "+ price);
+			}
+		}
+		else if(edad >= 65) {
+			System.out.println("Aplicando un descuento de 75% el precio a pagar es de: "+(price - (price * 0.75)));
+		}
+	}
 	/*13. Muestra por pantalla los números de 20 al 1 usando un bucle while, y después hazlo otra vez
 	usando un bucle for.*/
 	public static void exercise13() {
-		for (int i = 20; i > 0; i++) {
-			System.out.println(i);
+		int i = 0;
+		while(i < 20){
+			i++;
+			System.out.print(i + " ");
 		}
 	}
-	
+	/*14. Inicializa una variable entera a 0. Después, pregunta al usuario por un número y súmaselo a la
+	variable inicial. Repite esto hasta que el usuario introduzca el número cero. Utiliza el bucle
+	do..while.*/
+	public static void exercise14() {
+		int var = 0;
+		do {
+			System.out.println("Dime un número: \n");
+			Scanner sc = new Scanner(System.in);
+			int num = sc.nextInt();
+			var += num;
+			if(num == 0) break;
+			System.out.println("Resultado: "+ var);
+		}
+		while(var != 0);
+	}
+	/*15. Pide al usuario un número y calcula cuantas cifras tiene dicho número. Para ello puedes dividir
+	el número entre 10 hasta que el resultado sea cero.*/
+	public static void exercise15() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número: ");
+		int num = sc.nextInt();
+		
+		do {
+			num += num / 10;
+			System.out.println("El número tiene "+ num + " cifras");
+		}while(num != 0);
+	}
 	public static void main(String[] args) {
 		//exercise2();
 		//exercise3();
@@ -237,8 +346,13 @@ public class Condicionales {
 		//exercise7();
 		//exercise8();
 		//exercise9();
-		exercise10();
-		
+		//exercise10();
+		//exercise11();
+		//exercise12();
+		//exercise13();
+		//exercise14();
+		exercise15();
+
 	}
 
 }
