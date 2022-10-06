@@ -393,6 +393,23 @@ public class Condicionales {
 			//continue saltaría este paso sí lo hubiera
 		}
 	}
+	//mismo ejercicio que el anterior pero implemenado cosas del ejecicio 2
+	public static void exercise20A() {
+		Scanner sc = new Scanner(System.in);
+		int suma = 0;
+		int numero = -1;
+		
+		while(true) {
+			
+		System.out.print("Dime un número (acomulado: " + suma + "): ");
+		int num = sc.nextInt();
+		
+			if(num == 0) break;
+			if(num < 0) continue;  //vuelve al comienzo del while saltando (suma += numero;)
+			suma += numero;
+		}
+		System.out.println("El total ha sido "+suma);
+	}
 	/*21. Pide al usuario un número y dile los divisores de dicho número (resto da cero).*/
 	public static void exercise21() {
 		Scanner sc = new Scanner(System.in);
@@ -423,7 +440,7 @@ public class Condicionales {
 		//exercise8();
 		//exercise9();
 		//exercise10();
-		exercise11();
+		//exercise11();
 		//exercise12();
 		//exercise13();
 		//exercise14();
@@ -433,6 +450,7 @@ public class Condicionales {
 		//exercise18();
 		//exercise19();
 		//exercise20();
+		exercise20A();
 		//exercise21();
 		//exercise22();
 	
