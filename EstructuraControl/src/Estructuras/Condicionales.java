@@ -332,7 +332,8 @@ public class Condicionales {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Dime un número: ");
 		int num = sc.nextInt();
-		int cifras =0;
+		int cifras = 0;
+		
 		while(num != 0){
 			num /= 10;
 			cifras++;

@@ -28,13 +28,24 @@ public class EjerciciosArrays {
 	public static void ejercicio2() {
 		Scanner sc = new Scanner(System.in);
 		
-		int[] ArrayEnteros = new int[10]; 
+		int[] ArrayEnteros = new int[10];
+		int suma=0;
+		int media;
 		
 		for (int i = 0; i < ArrayEnteros.length; i++) {
-			System.out.print("Dime el número que quieras guardar ");
+			System.out.print("Dime el número que quieras guardar, te quedan "+ (11-(i+1)) + " números: ");
 			int num = sc.nextInt();
-			ArrayEnteros[0] = num;
+			ArrayEnteros[i] = num;
+			
+			//Suma de números de un Array
+			int sum = ArrayEnteros[i] + ArrayEnteros[i+1];
+			
 		}
+		for (int i = 0; i < ArrayEnteros.length; i++) {
+			System.out.println("Los núemros introducidos fueron: "+ArrayEnteros[i]);
+			System.out.println("La suma del Array es: "+ArrayEnteros[i]);
+		}
+		
 	}
 	public static void main(String[] args) {
 		//ejercicio1();
