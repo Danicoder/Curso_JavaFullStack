@@ -26,29 +26,45 @@ public class EjerciciosArrays {
 		será igual al primer número del array, después vas comparando con el resto de
 		posiciones).*/
 	public static void ejercicio2() {
+			
+		int suma = 0;
+		double media =0 ;
+		int[] numeros = new int [10];
+		
 		Scanner sc = new Scanner(System.in);
-		
-		int[] ArrayEnteros = new int[10];
-		int suma=0;
-		int media;
-		
-		for (int i = 0; i < ArrayEnteros.length; i++) {
+		for (int i = 0; i < numeros.length; i++) {
 			System.out.print("Dime el número que quieras guardar, te quedan "+ (11-(i+1)) + " números: ");
-			int num = sc.nextInt();
-			ArrayEnteros[i] = num;
-			
+			numeros[i] = sc.nextInt();
+		}
+
+		int mayor = numeros[0];
+		int menor = numeros[0];
+		
+		for (int i = 0; i < numeros.length; i++) {
+			System.out.print(i + " -> " + numeros[i]+ " , \n");
 			//Suma de números de un Array
-			int sum = ArrayEnteros[i] + ArrayEnteros[i+1];
-			
+			suma += numeros[i];
+			//media de los números (dividiendo la suma entre el número total de valores)
+			media = suma / numeros.length;
+			//El mayor y el menor de los números
+			mayor = Math.max(numeros[i], mayor);
+			menor = Math.min(numeros[i], mayor);
 		}
-		for (int i = 0; i < ArrayEnteros.length; i++) {
-			System.out.println("Los núemros introducidos fueron: "+ArrayEnteros[i]);
-			System.out.println("La suma del Array es: "+ArrayEnteros[i]);
-		}
+		
+		System.out.println("La suma del Array es: "+ suma);
+		System.out.println("La media del Array es: "+ media);
+		System.out.println("El mayor del Array es: "+ mayor);
+		System.out.println("El menor del Array es: "+ menor);
+	}
+	/*3. Pide al usuario 10 números con decimales (double). Usa un array para almacenarlos.
+	Muestra la media y los números que están por encima de esa media.*/
+	public static void ejercicio3() {
+		Scanner sc = new Scanner(System.in);
 		
 	}
 	public static void main(String[] args) {
 		//ejercicio1();
-		ejercicio2();
+		//ejercicio2();
+		ejercicio3();
 	}
 }
