@@ -431,6 +431,137 @@ public class Condicionales {
 			}
 		}
 	}
+	/*23. Escribe los números del 1 al 9, después del 1 al 8, del 1 al 7, y así sucesivamente en líneas
+		diferentes.
+		123456789
+		12345678
+		1234567
+		123456
+		12345
+		1234
+		123
+		12
+		1*/
+	public static void exercise23() {
+		
+		for (int f = 9; f >= 1; f--) {
+			for (int c = 1; c <= f; c++) {
+				System.out.print(c);
+			}
+			System.out.println();
+		}
+	}
+	/*24. Pide al usuario un número y dibuja un cuadrado (mismo alto que ancho) con asteriscos según
+		el número recibido.
+		Dime un número: 4
+		****
+		****
+		****
+		*****/
+	public static void exercise24() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		int num = sc.nextInt();
+		
+		for (int i = 0; i < num; i++) {
+			for (int j = 0; j < num; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	/*25.Pide al usuario un número y dibuja una escalera de bajada con asteriscos. La base será igual
+		al número recibido.
+		Dime un número: 4
+		*
+		**
+		***
+		*****/
+	public static void exercise25() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		int num = sc.nextInt();
+		
+		for (int i = num; i > 0; i--) {
+			for (int j = 0; j < i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	/*26. Haz lo mismo pero con una escalera de subida (para generar los huecos debes escribir el
+		  carácter de espacio).
+		  Dime un número: 4
+	 		 *
+	 		**
+	 	   ***
+		 *****/
+	public static void exercise26() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un número entero: ");
+		int num = sc.nextInt();
+		
+		for (int fila = 1; fila <= num; fila++) {
+			for (int col = 1; col <= num; col++) {
+				if(col <= (num - fila))
+					System.out.print(" ");
+				else
+					System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	/*27. Pide al usuario un ancho y un alto y dibuja un rectángulo vacío.
+	Dime un ancho: 5
+	Dime un alto: 4
+	*****
+	*   *
+	*   *
+	***** */
+	public static void exercise27() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime un ancho: ");
+		int ancho = sc.nextInt();
+		System.out.print("Dime un alto: ");
+		int alto = sc.nextInt();
+		
+		for (int fila = 1; fila <= alto; fila++) {
+			for (int col = 1; col <= ancho; col++) {
+				if(col == 1 || fila == 1 || fila == alto || col == ancho)
+					System.out.print("*");
+				else
+					System.out.print(" ");
+			}
+			System.out.println();
+		}
+	}
+	/*28. Pide al usuario un número que será la altura de una pirámide. Dibuja una pirámide con
+		asteriscos con dicha altura
+		Dime la altura de la pirámide: 4
+		   *
+		  ***
+		 *****
+	    ******* */
+	public static void exercise28() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Dime la altura de la pirámide: ");
+		int altura = sc.nextInt();
+		int astStart = altura;
+		int astEnd = altura;
+		
+		for (int fila = 1; fila <= altura; fila++) {
+			for(int col = 1; col <= altura * 2 - 1; col++) { // altura * 2 - 1 para que se aplique al lado opuesto también 
+				if(col >= astStart && col <= astEnd) {
+					System.out.print("*");
+				} else {
+					System.out.print(" ");
+				}
+			}
+			System.out.println();
+			astStart--;
+			astEnd++;
+		}
+	}
 		public static void main(String[] args){
 		//exercise2();
 		//exercise3();
@@ -451,9 +582,15 @@ public class Condicionales {
 		//exercise18();
 		//exercise19();
 		//exercise20();
-		exercise20A();
+		//exercise20A();
 		//exercise21();
 		//exercise22();
+		//exercise23();
+		//exercise24();
+		//exercise25();
+		//exercise26();
+		//exercise27();
+		exercise28();
 	
 	}
 }
