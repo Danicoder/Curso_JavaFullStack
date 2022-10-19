@@ -175,23 +175,25 @@ public class EjerciciosArrays {
 		Scanner sc = new Scanner(System.in);
 		String[] nombres = new String[10];
 		String nombre;
-		boolean repetido = false;
+		boolean repetido;
 		
+		//Primero pregunto el nombre y lo guardo
 		for (int i = 0; i < nombres.length; i++) {
 			do {
 				System.out.print("Introduce un nombre "+ (i+1)+": ");
 				nombre = sc.next();
-				nombres[i] = nombre;
-				for (int j = 0; j < i; j++) {// para que no pregunte la primera vez
-					if(nombres[(i-1)].equals(nombre)) {
-						repetido = true;
-						System.out.print("Nombre repetido, introduce un nombre distinto: ");
-						nombres[i] = sc.next();
-						
+				repetido = false;
+				for (int j = 0; j < i && repetido == false; j++) {
+					if(nombres[j].equals(nombre)) {
+						repetido = true;	
+						System.out.println("Nombre repetido !");
+						i--;
 					}
 				}
-			}while(repetido);
+			}while(repetido == true);
+			nombres[i] = nombre;
 		}
+		
 	}
 	/*9. Pide al usuario que escriba un nombre y guárdalo. A continuación, muestra las vocales
 	que contiene ese nombre (debes recorrer la cadena y comparar sus caracteres).*/
@@ -302,7 +304,7 @@ public class EjerciciosArrays {
 			//ejercicio5();
 			//ejercicio6();
 			//ejercicio7();
-			//ejercicio8(); correguir
+			//ejercicio8();
 			//ejercicio9();
 			//ejercicio10(10.5,21);
 			/*/*ejercicio 10  para almacenar datos en args
@@ -316,7 +318,7 @@ public class EjerciciosArrays {
 				System.err.println("Debes pasar 2 números por parámetro");
 			*/
 			//ejercicio11();
-			ejercicio12();
+			//ejercicio12();
 			//ejercicio13();
 	}
 }
