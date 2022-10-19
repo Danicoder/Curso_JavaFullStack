@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class EjerciciosArrays {
+	private static char[] error;
 	/*1. Crea un array con los nombres de los meses. A continuación pide al usuario un número
 	del 1 al 12. Muéstrale el nombre del mes correspondiente sin usar estructuras
 	condicionales (es decir, a partir de los valores del array).*/
@@ -217,24 +218,105 @@ public class EjerciciosArrays {
 			}
 		}
 	}
-	/* 10. Crea un programa que reciba 2 parámetros de entrada. Esos 2 parámetros serán 2
-	números que el programa sumará y mostrará el resultado. Se debe comprobar que se han recibido 
-	esos 2 parámetros o mostrar un error. Recuerda que los parámetros se reciben como cadenas, por
-	lo que hay que convertirlos a número.*/
-	public static void ejercicio10(double parametro1,double parametro2) {
-		double suma = (double)parametro1 + parametro2;
-		System.out.println(suma);
+	/*11. Crea un array de cadenas que almacenará nombres de alumnos, y crea otro array de
+		enteros de 2 dimensiones. La primera dimensión indicará el alumno (se corresponderá
+		con la posición del array de nombres) y la segunda sus notas. Crea 4 alumnos con 4
+		notas cada uno. A continuación muestra los nombres de lo alumnos y su nota media.*/
+	public static void ejercicio11() {
+		String[] alumnos = {"Luis","Amalia","Lucía","Angel"};
+		int[][] notas = {
+				{3,8,2,5},//posicion 0
+				{4,10,8,5},//posicion 1
+				{7,8,3,6},//posicion 2
+				{1,3,5,8}//posicion 3
+		};
+		
+		for (int i = 0; i < notas.length; i++) {
+			int sumaNota = 0;
+			for (int j = 0; j < notas[i].length; j++) {
+				sumaNota += notas[i][j]; //(0,0 ; 0,1 ; 0,2; 0,3)...
+			}
+			double NotaMedia = sumaNota / notas[i].length;
+			System.out.printf("Nombre: %s, media: %.2f\n", alumnos[i], NotaMedia);
+		}
 	}
-	public static void main(String[] args) {
-		//ejercicio1();
-		//ejercicio2();
-		//ejercicio3();
-		//ejercicio4();
-		//ejercicio5();
-		//ejercicio6();
-		//ejercicio7();
-		//ejercicio8(); correguir
-		//ejercicio9();
-		ejercicio10(10.5,21);
+	/*12. Haz lo mismo que en el ejercicio anterior pero pidiendo al usuario por consola cuantos
+	alumnos quiere almacenar. Por cada alumno pide su nombre y 4 notas. Muestra los
+	nombres y sus notas medias.*/
+	public static void ejercicio12() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("¿Cúantos alumnos quieres almacenar? ");
+		int cantidad = sc.nextInt();
+		
+		String[] name = new String[cantidad];
+		
+		int[][] notas = new int[cantidad][];
+		for(int i = 0; i < cantidad; i++) {//dentro de cada alumno pueden haber hasta 4 notas
+			notas[i] = new int[4];
+		}
+		
+		for (int i = 0; i < cantidad; i++) { //recorre catidad de filas
+			System.out.print("Nombre del alumno: ");
+			name[i] = sc.next();
+				for(int j = 0; j < notas[i].length; j++) {
+					System.out.print("Nota " + (j + 1) + ": ");
+					notas[i][j] = Integer.parseInt(sc.next());
+				}
+				System.out.println("--------------------------");
+		}
+		
+		//para hacer la media
+		for (int i = 0; i < cantidad; i++) {
+			double suma = 0;
+			for (int j = 0; j < notas[i].length; j++) {
+				suma += notas[i][j];
+			}
+			double media = suma / notas[i].length;
+			System.out.printf("Nombre: %s, media: %.2f\n", name[i], media);
+		}
+	}
+	/*13. Crea un array bidimensional de cadenas. En este array almacenaremos productos con
+	sus respectivos datos. La primera dimensión hará referencia a la posición de cada
+	producto. Y para cada producto (segunda dimensión), almacenaremos lo siguiente
+	(son cadenas todo): Nombre, precio y cantidad (3 campos).*/
+	public static void ejercicio13() {
+		String[][] productos = {
+			{"Silla","45.50","2"},
+			{"Mesa","58.68","1"},
+			{"Armarios","40","3"},
+		};
+		
+		System.out.printf("%-14s%10s%8s%12s\n","NOMBRE","PRECIO","CANT","TOTAL");
+		for (int i = 0; i < productos.length; i++) {
+				double precio = Double.parseDouble(productos[i][1]); //porque j no varía en cuanto a posición
+				int cantidad = Integer.parseInt(productos[i][2]);
+				double total = precio * cantidad;
+				System.out.printf("%-14s%9.2f€%8d%11.2f€\n",productos[i][0],precio, cantidad, total); //productos = solo la primera posición de arriba/abajo
+		}
+	}
+		public static void main(String[] args) {
+			//ejercicio1();
+			//ejercicio2();
+			//ejercicio3();
+			//ejercicio4();
+			//ejercicio5();
+			//ejercicio6();
+			//ejercicio7();
+			//ejercicio8(); correguir
+			//ejercicio9();
+			//ejercicio10(10.5,21);
+			/*/*ejercicio 10  para almacenar datos en args
+			   *Run ->  Run configuration -> Arguments
+			if(args.length == 2) { 
+				int num1 = Integer.parseInt(args[0]);
+				int num2 = Integer.parseInt(args[1]);
+				int resultado = num1 + num2;
+				System.out.println("Resultado: " + resultado);
+			} else 
+				System.err.println("Debes pasar 2 números por parámetro");
+			*/
+			//ejercicio11();
+			ejercicio12();
+			//ejercicio13();
 	}
 }
