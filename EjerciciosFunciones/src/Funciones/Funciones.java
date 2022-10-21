@@ -1,5 +1,12 @@
 package Funciones;
 
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
 public class Funciones {
 	/*1. Crea una función que te dibuje una fila de 20 asteriscos usando un bucle. Llámala desde el main 3 veces.*/
 	private static void ejercicio1() {
@@ -8,25 +15,36 @@ public class Funciones {
 		}
 		System.out.println();
 	}
-	/*. Crea una función que reciba una cadena y 2 números enteros por parámetro y te
+	/*2. Crea una función que reciba una cadena y 2 números enteros por parámetro y te
 	imprima si la longitud de la cadena está entre los 2 números o no. Llámala al menos 2
 	veces, una en la que sí esté en el rango, y otra en la que no.*/
 	public static void ejercicio2(String  cadena, int num1, int num2) {
-		if(cadena.length() >= num1 && cadena.length() <= num2) {
-			System.out.println("la longitud de la cadena esta en el rango de: " + cadena.length());
-		}
-		else {
-			System.out.println("Error: la cadena sale del rango indicado");
-		}
+		System.out.println(cadena.length() >= Math.min(num1, num2) && cadena.length() <= Math.min(num2,num1) ? 
+				"la longitud de la cadena esta en el rango de: " + cadena.length():
+				"Error: la cadena sale del rango indicado");
 	}
 	/*3. Crea una función que reciba un carácter y un número, dibuja un cuadrado usando ese
 	carácter cuyo ancho y alto sea igual al número recibido. Prueba la función.*/
-	public static void ejercicio3(char caracter, int lado) {
-		for (int i = 0; i < lado; i++) {
-			for (int j = 0; j < lado; j++) {
-				System.out.print(caracter);
+	public static void ejercicio3(char caracter, int numero) {
+		// Fila arriba
+		for(int i=0; i<numero;i++) {
+			System.out.print(caracter);
+		}
+		System.out.println();
+		
+		// Filas de mitad
+		for(int i=0; i<numero-2;i++) {
+			System.out.print(caracter);  // el lado izquierdo del cuadrado
+			for(int j=0; j<numero-2;j++) {
+				System.out.print(" ");
 			}
+			System.out.print(caracter); // el lado derecho del cuadrado
 			System.out.println();
+		}
+				
+		// Fila abajo
+		for(int i=0; i<numero;i++) {
+			System.out.print(caracter);
 		}
 	}
 	/*4. Crea una función con 2 parámetros. El primero será una cadena y representa al
@@ -68,11 +86,93 @@ public class Funciones {
 	posición del array usando new Random().nextInt(array.length).
 	A continuación pide al usuario que adivine la palabra seleccionada (tiene 3 intentos,
 	usa un bucle). Si la acierta felicítale, y si no, dile cual era la correcta.*/
-	public static void ejercicio7(String[] cadenas) {
-		for (String cadena : cadenas) {
-			cadena
+	public static String ejercicio7(String[] cadenas) {
+		int aleatorio = new Random().nextInt(0,cadenas.length);
+		return cadenas[aleatorio];
+	}
+	/*8. Crea una función que reciba un número indeterminado de parámetros enteros y
+	devuelva el máximo. Ten en cuenta que si recibes cero números, debes devolver cero
+	también.*/
+	public static int ejercicio8(int...numeros){
+		for (int i = 0; i < numeros.length; i++) {
+			if(numeros[i] > numeros[i+1])
+				return Math.max(numeros[i], numeros[i+1]);
+		}
+		return 0;
+	}
+	/*9. Crea una función que reciba una cadena y una subcadena por parámetro y devuelva
+	cuantas veces aparece la subcadena dentro de la cadena. Para ello debes saber que
+	como segundo parámetro a indexOf le puedes pasar la posición a partir de la cual
+	buscar (empezaríamos en cero). Cuando te devuelva -1 es que ya no la ha encontrado
+	(utiliza un bucle).
+	Por ejemplo, si recibimos “cocinando cocos con chocolate” y “co” devolveremos el
+	número 4.*/
+	public static int ejercicio9(String cadena, String subcadena ) {
+		int veces = 0;
+		int posicion = 0;
+		int pos=0;
+		do {
+			posicion = cadena.indexOf(subcadena,pos);
+			if(posicion != 1)
+			{
+				pos++;
+				veces++;
+			}
+		}while(pos != 1);
+        return veces;
+	}
+	/*10. Crea una función que reciba una cadena, un separador (char) y un número n. La
+	función insertará el separador dentro de la cadena cada n caracteres (ten en cuenta
+	que al insertar el separador, la siguiente posición se incrementa en 1.*/
+	public static void ejercicio10(String cadena,char separador, int n) {
+		for (int i = 0; i < cadena.length(); i++) {
+			System.out.print(cadena.charAt(i));
+			if (i == n) {
+				System.out.print(separador);
+				n+=2;
+			}
 		}
 	}
+	/*11. Crea una función que reciba una cadena con una serie de números separados por
+	punto y coma “;”, y devuelva la media de dichos números.*/
+	public static double ejercicio11(String num) {
+		String[] numeros = num.split(";");
+		double value = 0;
+		for (int i = 0; i < numeros.length; i++) {
+			value += Double.parseDouble(numeros[i]);
+		}
+		return value / numeros.length;
+	}
+	/*12. Crea una función que reciba un array de cadenas y te lo devuelva ordenado
+	alfabéticamente de la ‘z’ a la ‘a’.*/
+	public static String[] ejercicio12(String[] cadenas) {
+		Arrays.sort(cadenas,Collections.reverseOrder());
+		return cadenas;
+	}
+	/*13. Crea una función que reciba un array de números y un número. y te devuelva cuantas
+	veces aparece ese número en el array.*/
+	
+	public static void ejercicio13(int[] numeros, int n) {
+		int veces = 0;
+		for (int i = 0; i < numeros.length; i++) { //cuantas veces el numero aparce ene l array de numeros
+			if(numeros[i] == n)
+				veces++;
+		}
+		System.out.println("El "+n+" aparece "+ veces+" veces");
+	}
+	/*14. Crea una función que a partir de una fecha (LocalDateTime) que reciba por parámetro,
+	te devuelva una cadena con la fecha en el siguiente formato:
+	Si recibimos la siguiente fecha “04/07/2019”, devolvería “Jueves, 4 de julio de 2019”.*/
+	public static void ejercicio14() {
+		
+	}
+	/*15. Crea una función que reciba una fecha en formato dd-mm-yyyy, conviértela a fecha
+	(LocalDate) utilizando la función subString o split para extraer el día, mes y año, o usa
+	el DateTimeFormatter, súmale 2 años, 3 meses y 5 días, y muestra la fecha resultante.*/
+	public static void ejercicio15() {
+		
+	}
+	
 	public static void main(String[] args) {
 		//se podría repetir también con un for tantas veces como llamadas a la función se quieran hacer
 		/*
@@ -96,6 +196,55 @@ public class Funciones {
 		double[] numeros = {12,14,54,87,9};
 		ejercicio6(numeros);
 		*/
-		//String[] cadenas = {"Nadis","Julia","Fernando"};		
+		/*
+		String[] cadenas = {"Nadis","Julia","Fernando","Joanna","Luz Elena"};
+		String CaracterAleatorio = ejercicio7(cadenas);
+		
+		boolean adivina = true;
+		int intento = 3;
+		do{
+			Scanner sc = new Scanner(System.in);
+			System.out.print("Adivina la palabra seleccionada ");
+			String palabra = sc.next();
+			if(palabra.equalsIgnoreCase(CaracterAleatorio)) {
+				System.out.println("Felicidades, has adivinado");
+				adivina = false;
+			}
+			else {
+				System.out.print("Te quedan: "+ (intento-1)+ " intentos. ");
+				intento--;
+			}
+			if(intento == 0)
+				System.out.println("La respuesta era: "+ CaracterAleatorio);
+		}while(adivina && intento != 0 || intento < 0);
+		*/
+		/*
+		int valorMax = ejercicio8(7,65,8);
+		int valorMax1 = ejercicio8();
+		System.out.println(valorMax);
+		System.out.println(valorMax1);
+		*/
+		/*
+		String cadena = "cocinando cocos con chocolate";;
+		String busca = "co";
+		int apariciones = ejercicio9(cadena,busca);
+		System.out.println(apariciones == -1 ? "La cadena no se encuentra" : "La cadena aparece "+ apariciones + " veces");
+		*/
+		
+		//ejercicio10("Hay una mosca en mi sopa",'*',3);
+		
+		/*double media = ejercicio11("5;8;90;8;87.46");
+		System.out.println(Math.floor(media*100) /100); //para que el redondeo salga con dos decimales*/
+		/*
+		String[] cadenas = {"Nadis","Julia","Fernando","Joanna","Luz Elena"};
+		String[] OrdenAlfareverse = ejercicio12(cadenas);
+		System.out.println(String.join(", ", OrdenAlfareverse));
+		*/
+		/*
+		int[] numeros = {12,12,54,12,9};
+		ejercicio13(numeros,12);
+		*/
+		
+		ejercicio14();
 	}
 }
