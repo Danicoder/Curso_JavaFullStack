@@ -3,6 +3,11 @@ package Funciones;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -160,17 +165,96 @@ public class Funciones {
 		}
 		System.out.println("El "+n+" aparece "+ veces+" veces");
 	}
+	public static String MesesEspanol(int mes) {
+            String resultado = "";
+	    switch(mes) {
+            case 1:
+                resultado = "enero";
+                break;
+            case 2:
+                resultado = "febrero";
+                break;
+            case 3:
+                resultado = "marzo";
+                break;
+            case 4:
+                resultado = "abril";
+                break;
+            case 5:
+                resultado = "mayo";
+                break;
+            case 6:
+                resultado = "junio";
+                break;
+            case 7:
+                resultado = "julio";
+                break;
+            case 8:
+                resultado = "agosto";
+                break;
+            case 9:
+                resultado = "septiembre";
+                break;
+            case 10:
+                resultado = "octubre";
+                break;
+            case 11:
+                resultado = "noviembre";
+                break;
+            case 12:
+                resultado = "diciembre";
+                break;
+            default:
+                resultado = "mes fuera del calendario";
+                break;
+        }
+        return resultado;
+    }
 	/*14. Crea una función que a partir de una fecha (LocalDateTime) que reciba por parámetro,
 	te devuelva una cadena con la fecha en el siguiente formato:
 	Si recibimos la siguiente fecha “04/07/2019”, devolvería “Jueves, 4 de julio de 2019”.*/
-	public static void ejercicio14() {
-		
+	public static String ejercicio14(String fecha) {
+	    LocalDate fechaConvertirda = LocalDate.parse(fecha);
+	    var mes = fechaConvertirda.getMonth().getValue();
+	    var dia = fechaConvertirda.getDayOfMonth();
+	    var anyo = fechaConvertirda.getYear();
+	    var diaValor = fechaConvertirda.getDayOfWeek().getValue();
+	    String result = "";
+
+	   switch(diaValor){
+	    case 1:
+	        result = "lunes, " + dia + " de " + MesesEspanol(mes) + " de " + anyo;
+	        break;
+	    case 2:
+	        result = "martes, " + dia + " de "+ MesesEspanol(mes) + " de " + anyo;
+	        break;
+	    case 3:
+	        result = "miércoles, " + dia + " de "+ MesesEspanol(mes) + " de " + anyo;
+	        break;
+	    case 4:
+	        result = "jueves, " + dia + " de "+ MesesEspanol(mes) + " de " + anyo;
+	        break;
+	    case 5:
+	        result = "viernes, " + dia + " de "+ MesesEspanol(mes) + " de " + anyo;
+	        break;
+	    }
+    return result;
+	   
 	}
 	/*15. Crea una función que reciba una fecha en formato dd-mm-yyyy, conviértela a fecha
 	(LocalDate) utilizando la función subString o split para extraer el día, mes y año, o usa
 	el DateTimeFormatter, súmale 2 años, 3 meses y 5 días, y muestra la fecha resultante.*/
-	public static void ejercicio15() {
+	public static void ejercicio15(String fecha) {
+		String[] fechaArray = fecha.split("-");
+		String day = fechaArray[0];
+		String mes = fechaArray[1];
+		String anyo = fechaArray[2];
+		System.out.println("Día: "+day+" mes: " + mes + " año: " + anyo);
+
+		LocalDate Formatofecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-y"));
+		System.out.println(Formatofecha); //1995-04-04
 		
+		System.out.println(Formatofecha.plusYears(2).plusMonths(3).plusDays(5));//1997-07-09
 	}
 	
 	public static void main(String[] args) {
@@ -244,7 +328,10 @@ public class Funciones {
 		int[] numeros = {12,12,54,12,9};
 		ejercicio13(numeros,12);
 		*/
-		
-		ejercicio14();
+		/*
+		String date = ejercicio14("2019-07-04");
+		System.out.println(date);
+		*/
+	    ejercicio15("04-04-1995");
 	}
 }
