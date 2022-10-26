@@ -1,6 +1,7 @@
-package poo1;
+package Poo;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Persona {
     
@@ -17,7 +18,7 @@ public class Persona {
     }
 
     public Persona(String nombre, String apellido, String dni, String telefono, LocalDate fechaNacimiento) {
-        super();
+        super(); //hace referencai al padre de esta clase (herencias)
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -75,5 +76,15 @@ public class Persona {
         return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", telefono=" + telefono
                 + ", fechaNacimiento=" + fechaNacimiento + "]";
     }
-    
+    public boolean esMayorEdad() {      
+        //LocalDate edad = LocalDate.now()-this.fechaNacimiento;  // No se puede
+        //Duration edad = Duration.between(this.fechaNacimiento, LocalDate.now());  // Si quiero segundos o minutos
+        Period edad = Period.between(this.fechaNacimiento, LocalDate.now());  // Quiero años, meses o días
+        int anyos = Math.abs(edad.getYears());
+        if(anyos>=18)
+            return true;
+        else
+            return false;
+        
+    }
 }
