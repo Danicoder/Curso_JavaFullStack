@@ -1,76 +1,79 @@
-package Prueba;
+package poo1;
 
 import java.time.LocalDate;
 
 public class Persona {
-	//atributos
-	
-		String nombre;
-		String apellido;
-		String dni;
-		String telefono;
-		LocalDate fechaNacimiento;
-		
-		//constructores = construir personas
-		
-		public Persona(String nombre, String apellido, String dni, String telefono, LocalDate fechaNacimiento) {
-			super();
-			this.nombre = nombre;
-			this.apellido = apellido;
-			this.dni = dni;
-			this.telefono = telefono;
-			this.fechaNacimiento = fechaNacimiento;
-		}
-		
-		//Getters and Setters
-		
-		public Persona() {
-		}
+    
+    // Atributos de la clase (propiedades)
+    String nombre;
+    String apellido;
+    String dni;
+    String telefono;
+    LocalDate fechaNacimiento;
+    
+    // Constructores
+    public Persona() {
+        
+    }
 
-		public String getNombre() {
-			return nombre;
-		}
+    public Persona(String nombre, String apellido, String dni, String telefono, LocalDate fechaNacimiento) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    
 
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
+    // Getters and Setters
 
-		public String getApellido() {
-			return apellido;
-		}
+    public String getNombre() {
+        return nombre;
+    }
 
-		public void setApellido(String apellido) {
-			this.apellido = apellido;
-		}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-		public String getDni() {
-			return dni;
-		}
+    public String getApellido() {
+        return apellido;
+    }
 
-		public void setDni(String dni) {
-			this.dni = dni;
-		}
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-		public String getTelefono() {
-			return telefono;
-		}
+    public String getDni() {
+        return dni;
+    }
 
-		public void setTelefono(String telefono) {
-			this.telefono = telefono;
-		}
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
-		public LocalDate getFechaNacimiento() {
-			return fechaNacimiento;
-		}
+    public String getTelefono() {
+        return telefono;
+    }
 
-		public void setFechaNacimiento(LocalDate fechaNacimiento) {
-			this.fechaNacimiento = fechaNacimiento;
-		}
-		
-		// Mostrar datos
-		@Override
-		public String toString() {
-			return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", telefono=" + telefono
-					+ ", fechaNacimiento=" + fechaNacimiento + "]";
-		}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    // toString()
+    
+    @Override
+    public String toString() {
+        return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", telefono=" + telefono
+                + ", fechaNacimiento=" + fechaNacimiento + "]";
+    }
+    
 }
