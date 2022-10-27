@@ -110,16 +110,8 @@ public class Prueba {
         coches.removeIf(c->c.getMatricula().equals(matricula));
     }
     public static void ModificarCoche() {
-        System.out.println("¿Qué dato desea modificar?");
-        String datoAmodificar = sc.nextLine();
-        
-        for (Coche coche : coches) {
-            if(coche.equals(coche))
-                System.out.println();
-        }
-    }
-    public static void CochesRodados() {
-        
+        System.out.println("¿Qué dato desea modificar del coche?");
+        String datoAmodificar = sc.nextLine();            
     }
     
     public static void menu() {
