@@ -13,7 +13,6 @@ public class main {
     public static void ejemploPersonas() {
         Persona vacia = new Persona();  // Llama al constructor sin parámetros
         Persona fran = new Persona("Fran","García","111X","666-666-666",LocalDate.parse("1976-07-27"));
-        Persona dani = new Persona("Dani","García","222X","666-666-667",LocalDate.of(1979, 3, 26));
         Persona joven = new Persona("Joven","García","222X","666-666-667",LocalDate.of(2020, 3, 26));
 
         System.out.println(fran);  // Llama al método toString
@@ -111,7 +110,7 @@ public class main {
     }
     public static void ModificarCoche() {
         System.out.println("¿Qué dato desea modificar del coche?");
-        String datoAmodificar = sc.nextLine();            
+        //String datoAmodificar = sc.nextLine();            
     }
     
     public static void menu() {
@@ -152,8 +151,7 @@ public class main {
 
     }
     
-    public static void main(String[] args) {
-        
+    public static void main(String[] args){
         //ejemploPersonas();
         //ejemplosCoches();
         sc = new Scanner(System.in);
