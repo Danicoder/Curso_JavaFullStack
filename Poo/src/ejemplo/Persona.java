@@ -1,4 +1,4 @@
-package Poo;
+package ejemplo;
 
 import java.time.LocalDate;
 import java.time.Period;

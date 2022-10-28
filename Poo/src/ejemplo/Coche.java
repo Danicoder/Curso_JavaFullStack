@@ -1,4 +1,4 @@
-package Prueba;
+package ejemplo;
 import java.util.Objects;
 //1. Crear los atributos de la clase
 //2. Crear los constructores (vacio, todos los par�metros) 

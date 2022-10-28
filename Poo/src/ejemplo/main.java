@@ -1,11 +1,11 @@
-package Prueba;
+package ejemplo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Prueba {
+public class main {
 
     static Scanner sc;
     static List<Coche> coches = new ArrayList<Coche>();
