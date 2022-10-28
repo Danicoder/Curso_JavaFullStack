@@ -1,10 +1,14 @@
 package ejemplo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Jugador {
     
     private String nombre;
     private int edad;
     private double sueldo;
+    List<Jugador> ListJugadores = new ArrayList<Jugador>();
 
     public Jugador() {
         this.nombre = null;
@@ -40,5 +44,10 @@ public class Jugador {
     }
     public void setSueldo(double sueldo) {
         this.sueldo = Math.abs(sueldo);
+    }
+    @Override
+    public String toString() {
+        return "Jugador [nombre=" + nombre + ", edad=" + edad + ", sueldo=" + sueldo + ", ListJugadores="
+                + ListJugadores + "]";
     }
 }
