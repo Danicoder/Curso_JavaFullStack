@@ -2,11 +2,11 @@ package ejemplo;
 import java.util.Objects;
 //1. Crear los atributos de la clase
 //2. Crear los constructores (vacio, todos los par�metros) 
-//2.b. (opcional) Crear m�s constructores y el de copia
+//2.b. (opcional) Crear más constructores y el de copia
 //3. Crear Getters and Setters
 //4. Crear toString
 //5. Crear hashCode and Equals
-//6. (Opcional) m�todos adicionale de la clase
+//6. (Opcional) métodos adicionale de la clase
 
 public class Coche {
     
@@ -23,7 +23,7 @@ public class Coche {
         }
 
         
-        // Constructor con todos los par�metros
+        // Constructor con todos los parámetros
         public Coche(String matricula, String marca, String modelo, int anyo, int kms) {
             super();
             this.matricula = matricula;
