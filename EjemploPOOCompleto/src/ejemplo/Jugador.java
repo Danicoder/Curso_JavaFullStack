@@ -7,9 +7,9 @@ public class Jugador {
     private double sueldo;
 
     public Jugador() {
-        this.nombre = null;
-        this.edad = 27;
-        this.sueldo = 1000;
+        this.nombre = nombre;
+        setEdad(edad);
+        setSalario(salario);
     }
     //constructor de copia
     public Jugador(Jugador j){
