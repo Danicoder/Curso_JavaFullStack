@@ -32,10 +32,21 @@ public class App {
             }
         }
     }
-    /**
-     * @param args
-     * @throws Exception
-     */
+    public static void Equipos(){//apartado4
+        Equipo e = new Equipo();
+
+        e.addJugador(new Jugador("Alma",25,25000));
+        e.addJugador(new Jugador("Antonio",22,44000));
+        e.addJugador(new Jugador("Lucia",40,21000));
+        e.addJugador(new Jugador("Oscar",35,39000));
+
+        e.deleteJugador(0);
+
+        for (int i = 0; i < e.getNumJugadores(); i++) {
+            System.out.println(e.getJugador(i));
+        }
+        System.out.println("Total sueldos: "+ e.totalSueldos());
+    }
     public static void main(String[] args) throws Exception {
         Producto p = new Producto("Silla", 100);
         Producto p2 = new Producto(p.getNombre(), p.getPrecio());
@@ -53,5 +64,7 @@ public class App {
         // System.out.println("Total con impuesto (10): " + p.getPrecioImpuesto(10));
         // System.out.println("Total con impuesto (21): " + p.getPrecioImpuesto());
         Jugadores();
+        Equipos();
+
     }
 }

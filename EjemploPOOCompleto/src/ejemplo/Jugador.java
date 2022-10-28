@@ -1,14 +1,10 @@
 package ejemplo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Jugador {
     
     private String nombre;
     private int edad;
     private double sueldo;
-    List<Jugador> ListJugadores = new ArrayList<Jugador>();
 
     public Jugador() {
         this.nombre = null;
@@ -34,10 +30,10 @@ public class Jugador {
         this.nombre = nombre;
     }
     public int getEdad() {
-        return Math.abs(edad);
+        return edad;
     }
     public void setEdad(int edad) {
-        this.edad = edad;
+        this.edad = Math.abs(edad);
     }
     public double getSueldo() {
         return Math.abs(sueldo);
@@ -47,7 +43,6 @@ public class Jugador {
     }
     @Override
     public String toString() {
-        return "Jugador [nombre=" + nombre + ", edad=" + edad + ", sueldo=" + sueldo + ", ListJugadores="
-                + ListJugadores + "]";
+        return "Jugador [nombre=" + nombre + ", edad=" + edad + ", sueldo=" + sueldo + "]";
     }
 }
