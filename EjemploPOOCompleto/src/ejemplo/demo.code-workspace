@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "C:/Users/EXPERTPC/OneDrive/Documentos/MavenFullStackJava/demo"
+		},
+		{
+			"path": "C:/Users/EXPERTPC/OneDrive/Documentos/JDBC"
+		},
+		{
+			"path": "../../../Poo"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
