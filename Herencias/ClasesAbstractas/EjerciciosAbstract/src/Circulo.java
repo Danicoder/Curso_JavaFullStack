@@ -14,4 +14,12 @@ public class Circulo extends Figura{
     public double getArea() {
         return Math.pow(radio,2) * Math.PI;
     }
+
+    public double getRadio() {
+        return radio;
+    }
+
+    public void setRadio(double radio) {
+        this.radio = radio;
+    }
 }
