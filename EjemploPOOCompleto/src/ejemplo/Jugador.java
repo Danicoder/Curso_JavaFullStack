@@ -6,22 +6,16 @@ public class Jugador {
     private int edad;
     private double sueldo;
 
-    public Jugador() {
-        this.nombre = null;
-        this.edad = 27;
-        this.sueldo = 1000;
+     public Jugador(String nombre, int edad, double sueldo) {
+        this.nombre = nombre;
+        this.edad = edad; // o setEdad(edad);
+        this.sueldo = sueldo;
     }
     //constructor de copia
     public Jugador(Jugador j){
         this.nombre = j.nombre;
         this.edad = j.edad;
         this.sueldo = j.sueldo;
-    }
-
-    public Jugador(String nombre, int edad, double sueldo) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.sueldo = sueldo;
     }
     public String getNombre() {
         return nombre;
