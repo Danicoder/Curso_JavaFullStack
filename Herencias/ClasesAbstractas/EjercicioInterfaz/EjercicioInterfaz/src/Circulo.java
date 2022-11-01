@@ -1,4 +1,4 @@
-public class Circulo implements Figura{
+public class Circulo implements IFigura{
     private double radio;
     
     public Circulo(double radio) {
