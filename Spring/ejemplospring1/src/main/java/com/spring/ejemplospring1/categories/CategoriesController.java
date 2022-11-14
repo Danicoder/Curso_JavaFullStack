@@ -2,9 +2,6 @@ package com.spring.ejemplospring1.categories;
 
 import java.util.List;
 
-import javax.naming.NameNotFoundException;
-
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.data.relational.core.conversion.DbActionExecutionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

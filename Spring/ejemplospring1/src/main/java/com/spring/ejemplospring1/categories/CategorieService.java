@@ -18,12 +18,11 @@ public class CategorieService {
         return catRepository.findById(id).orElse(null); //si la encuentra que la devuelve y sí no que la devuelva vacía
     }
     public Category insert(Category c) {
-        c.setId(0); //forzamosque haga un insert en vez de un update
+        c.setId(0); // Por si acaso nos envían una id (haría un update en lugar de insert)
         return catRepository.save(c);
     }
     public Category update(Category c, int id) {
-        Category actual = getCategory(id);
-        c.setId(id); //Al tner la id hace un update en vez de un insert
+        c.setId(id); // Al tener una id hace un update en lugar de un insert
         return catRepository.save(c);
     }
     public void delete(int id) {
