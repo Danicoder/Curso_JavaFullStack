@@ -22,4 +22,11 @@ public class PuntuacionService {
         return puntRepository.save(p);
     }
     
+    public Puntuacion update(Puntuacion p, int id) {
+        p.setId(0);
+        return puntRepository.save(p);
+    }
+    public void delete(int id) {
+        puntRepository.deleteById(id);
+    }
 }
