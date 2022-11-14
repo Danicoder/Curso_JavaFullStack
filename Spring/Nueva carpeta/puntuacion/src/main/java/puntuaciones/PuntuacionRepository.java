@@ -1,4 +1,4 @@
-package com.spring.ejemplospring1.categories;
+package puntuaciones;
 
 import org.springframework.data.repository.CrudRepository;
 

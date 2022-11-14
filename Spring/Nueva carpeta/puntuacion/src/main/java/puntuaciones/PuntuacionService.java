@@ -1,4 +1,4 @@
-package com.spring.ejemplospring1.categories;
+package puntuaciones;
 
 import java.util.List;
 import org.springframework.stereotype.Service;

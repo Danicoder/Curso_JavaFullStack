@@ -1,4 +1,4 @@
-package com.spring.ejemplospring1.categories;
+package puntuaciones;
 
 import java.util.List;
 
@@ -21,13 +21,13 @@ public class PuntuacionController {
     private final PuntuacionService puntService;
 
     @GetMapping
-    public List<Puntuacion> getPuntuaciones() {
+    public List<puntuacion> getPuntuaciones() {
         return puntService.getPuntuaciones();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Puntuacion> getPuntuacion(int id) {
+    public ResponseEntity<puntuacion> getPuntuacion(int id) {
         try {
-            Puntuacion p = puntService.getPuntucion(id);
+            puntuacion p = puntService.getPuntucion(id);
             return ResponseEntity.ok(p);
         } catch (DbActionExecutionException e) {
             return ResponseEntity.notFound().build(); //404
@@ -36,7 +36,7 @@ public class PuntuacionController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) 
-    public Puntuacion insertPuntucion(@RequestBody Puntuacion p) {
+    public puntuacion insertPuntucion(@RequestBody puntuacion p) {
         return puntService.insert(p);
     }
     /*@PutMapping("/{id}")
