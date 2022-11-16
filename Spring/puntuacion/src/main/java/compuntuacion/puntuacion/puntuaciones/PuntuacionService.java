@@ -1,4 +1,4 @@
-package puntuaciones;
+package compuntuacion.puntuacion.puntuaciones;
 
 import java.util.List;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package puntuaciones;
+package compuntuacion.puntuacion.puntuaciones;
 
 import org.springframework.data.repository.CrudRepository;
 

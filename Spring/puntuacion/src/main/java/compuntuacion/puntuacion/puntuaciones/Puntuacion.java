@@ -1,4 +1,4 @@
-package puntuaciones;
+package compuntuacion.puntuacion.puntuaciones;
 import org.springframework.data.annotation.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;

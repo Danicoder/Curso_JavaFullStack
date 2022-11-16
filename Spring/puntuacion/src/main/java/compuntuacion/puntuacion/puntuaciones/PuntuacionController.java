@@ -1,4 +1,4 @@
-package puntuaciones;
+package compuntuacion.puntuacion.puntuaciones;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/puntuacion")
+@RequestMapping("/puntuaciones")
 @RequiredArgsConstructor
 public class PuntuacionController {
     private final PuntuacionService puntService;
