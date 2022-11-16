@@ -2,9 +2,7 @@ package compuntuacion.puntuacion.puntuaciones;
 
 import java.util.List;
 
-import org.springframework.data.relational.core.conversion.DbActionExecutionException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,13 +26,8 @@ public class PuntuacionController {
         return puntService.getPuntuaciones();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Puntuacion> getPuntuacion(int id) {
-        try {
-            Puntuacion p = puntService.getPuntucion(id);
-            return ResponseEntity.ok(p);
-        } catch (DbActionExecutionException e) {
-            return ResponseEntity.notFound().build(); //404
-        }
+    public Puntuacion getPuntuacion(@PathVariable int id) {
+        return puntService.getPuntucion(id);
     }
     
     @PostMapping
@@ -43,13 +36,8 @@ public class PuntuacionController {
         return puntService.insert(p);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Puntuacion> updatePuntuacion(@RequestBody Puntuacion c,@PathVariable int id) {
-        try {
-            Puntuacion updated = puntService.update(c, id);
-            return ResponseEntity.ok(updated);
-        } catch (DbActionExecutionException e) {
-           return ResponseEntity.notFound().build(); //404 NOT FOUND
-        }
+    public Puntuacion updatePuntuacion(@RequestBody Puntuacion c,@PathVariable int id) {
+        return puntService.update(c, id);
     }
 
     @DeleteMapping("/{id}")

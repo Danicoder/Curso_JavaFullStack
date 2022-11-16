@@ -14,6 +14,9 @@ public class CategorieService {
     public List<Category> getCategories() {
         return (List<Category>) catRepository.findAll();
     }
+    public List<Category> getCategoriesByName(String name) {
+        return catRepository.buscarNombre("%" + name + "%");
+    }
     public Category getCategory(int id) { 
         return catRepository.findById(id).orElse(null); //si la encuentra que la devuelve y sí no que la devuelva vacía
     }
