@@ -1,13 +1,6 @@
 package com.example.ejemplospring1.categories;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-
-import com.example.ejemplospring1.products.Product;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

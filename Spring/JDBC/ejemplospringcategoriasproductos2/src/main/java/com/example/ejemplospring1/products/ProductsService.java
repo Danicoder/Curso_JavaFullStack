@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.ejemplospring1.categories.CategoriesRepository;
-import com.example.ejemplospring1.categories.Category;
 
 import lombok.RequiredArgsConstructor;
 
