@@ -14,7 +14,7 @@ public class PuntuacionService {
     private final PuntuacionRepository puntRepository;
 
     public List<Puntuacion> getPuntuaciones() {
-        return (List<Puntuacion>) puntRepository.findAll();
+        return puntRepository.findAll();
     }
 
     public Puntuacion getPuntucion(int id) {
@@ -23,6 +23,7 @@ public class PuntuacionService {
    }
 
     public Puntuacion insert(Puntuacion p) {
+        p.setId(0);
         return puntRepository.save(p);
     }
     
@@ -30,7 +31,7 @@ public class PuntuacionService {
         if(!puntRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Puntuación no encontrada");
         }
-        p.setId(id); // Al tener una id hace un update en lugar de un insert
+        p.setId(0);
         return puntRepository.save(p);
     }
     public void delete(int id) {
