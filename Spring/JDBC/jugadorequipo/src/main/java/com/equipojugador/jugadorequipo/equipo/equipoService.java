@@ -37,6 +37,7 @@ public class equipoService {
         return JdbcTemplate.insert(e);
     }
     public void delete(int id) {
+        //JdbcTemplate.deleteById(id,equipo.class);
         equipoRepository.deleteById(id);
     }
 }

@@ -10,5 +10,5 @@ public interface equipoRepository extends CrudRepository<equipo,Integer> {
     List<equipo> findByNombreContaining(String nombre);
     List<equipo> findByCiudad(String ciudad);
     //para filtrar por nombre y ciudad
-    List<equipo> findByNombreCointainingAndCiudad(String nombre,String Ciudad);
+    List<equipo> findByNombreContainingAndCiudad(String nombre,String Ciudad);
 }

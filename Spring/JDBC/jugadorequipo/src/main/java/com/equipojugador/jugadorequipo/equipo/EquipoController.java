@@ -38,6 +38,7 @@ public class EquipoController {
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public equipo insertEquipo(@RequestBody equipo e) { //hace referencia al objeto que nos llega desde el cliente
         return equipoService.insert(e);
     }

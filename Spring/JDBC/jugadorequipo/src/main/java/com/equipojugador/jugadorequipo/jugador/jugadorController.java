@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-
+//operación con cliente.Enviarle la información solicitada. S e encarga de las peticiones
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/jugadores")
@@ -22,19 +22,14 @@ public class jugadorController {
     //inyectar en el constructor:
     private final jugadorService JugadorService;
 
-    @GetMapping
-    public List<jugador> getJugadoresSueldo(@RequestParam(required = false) Double sueldo) {
-        if(sueldo > 0){return JugadorService.getSueldoMayor(sueldo);}
-        else{return JugadorService.getAlLList();}
-    }
-
     @GetMapping("/{id}")
     public jugador getId(@PathVariable int id) {
         return JugadorService.getById(id);
     }
     @PostMapping()
     public jugador insertJugador(@RequestBody jugador j){
-        return JugadorService.insert(j);
+        //.save() se dija en el valor de la CP. sí alguien pasa el euqipo con una id me la actualiza en vez de insertar un valor nuevo
+        return JugadorService.insert(j); 
     }
     @DeleteMapping("/{id}/jugador/{idEquipo}")
     @ResponseStatus(HttpStatus.NO_CONTENT) // 204 informa que el servidor ha procesado con éxito la solicitud
