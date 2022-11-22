@@ -1,0 +1,13 @@
+<div class="mb-3">
+  <label for="nombre" class="form-label">Nombre</label>
+  <input type="text" class="form-control" id="nombre" placeholder="nombre del equipo" [(ngModel)]="equipo.nombre">
+</div>
+<div class="mb-3">
+  <label for="ciudad" class="form-label">Nombre de la ciudad</label>
+  <input type="text" class="form-control" id="nombre" placeholder="nombre de la ciudad" [(ngModel)]="equipo.ciudad">
+</div>
+<div class="mb-3">
+  <label for="fechaCreacion" class="form-label">Fecha de la creación</label>
+  <input type="date" class="form-control" id="fechaCreacion" placeholder="Fecha de creación" [(ngModel)]="equipo.fechaCreacion">
+</div>
+<button type="button" class="btn btn-primary" (click)="postEquipo()">Enviar</button>

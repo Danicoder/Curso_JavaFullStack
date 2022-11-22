@@ -11,6 +11,12 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   getEquipos() {
-    return this.http.get(`${SERVER}equipos`);
+    return this.http.get(`${SERVER}equipos`)
+  }
+  postEquipos(equipo:any){
+    return this.http.post(`${SERVER}equipos`,equipo)
+  }
+  deleteEquipos(id:number){
+    return this.http.delete(`${SERVER}equipos/${id}`)
   }
 }
