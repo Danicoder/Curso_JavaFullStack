@@ -14,7 +14,14 @@ export class ListadoEquiposComponent implements OnInit {
 
   ngOnInit(): void {
     this.backend.getEquipos().subscribe((equipos) => {
+      this.getEquipos();
+    })
+  }
+  //ordena por nombre
+  getEquipos(){
+    this.backend.getEquipos().subscribe((equipos) => {
       this.equipos = equipos;
+      this.equipos.sort((a: any, b: any) => a.nombre.localeCompare(b.nombre));
       console.log(this.equipos);
     })
   }
@@ -25,11 +32,7 @@ export class ListadoEquiposComponent implements OnInit {
         icon: 'success',
         title: 'Registro borrado',
         text: `El equipo ${equipo.nombre} se ha borrado correctamente`
-      });
-      //se actualiza solo
-      this.backend.getEquipos().subscribe((equipos) => {
-        this.equipos = equipos;
-      })
+      }).then(() => {this.getEquipos();})
     });
   }
 }

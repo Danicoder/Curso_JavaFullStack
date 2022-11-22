@@ -23,7 +23,7 @@ export class FormularioEquipoComponent implements OnInit {
         icon: 'success',
         title: 'Registro guardado',
         text: `El equipo ${this.equipo.nombre} se ha guardado correctamente`
-      })
+      }).then(() => { location.reload();}); // cuando le de al botón del Swit se refresca la pantalla
     });
   }
 }
