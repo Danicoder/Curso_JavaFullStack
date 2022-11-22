@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../services/backend.service';
 
 @Component({
   selector: 'app-listado-equipos',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listado-equipos.component.css']
 })
 export class ListadoEquiposComponent implements OnInit {
+  equipos:any;
 
-  constructor() { }
+  constructor(private backend:BackendService) { }
 
   ngOnInit(): void {
+    this.backend.getEquipos().subscribe((equipos) => {
+      this.equipos = equipos;
+      console.log(this.equipos);
+    })
   }
 
 }
