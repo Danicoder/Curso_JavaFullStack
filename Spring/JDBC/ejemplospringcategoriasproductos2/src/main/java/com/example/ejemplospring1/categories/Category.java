@@ -11,6 +11,3 @@ public class Category {
     @Id private int id;
     private String name;
 }
-
-// Esto equivale más o menos a lo de arriba
-// public record Category(@Id int id, String name) {}
