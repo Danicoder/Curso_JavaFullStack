@@ -35,7 +35,7 @@ public class ProductsController {
 
     @PostMapping()
     public Product insertProduct(@RequestBody Product p) {
-        return productsService.insertProduct(p);
+        return productsService.insertProduct(p, p.getCategory().getId());
     }
 
     @DeleteMapping("/{idProd}")

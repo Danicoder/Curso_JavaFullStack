@@ -68,7 +68,7 @@ public class CategoriesController {
     @PostMapping("/{idCat}/products")
     public Product insertProduct(@RequestBody Product p, @PathVariable int idCat) {
         p.setCategory(getCategory(idCat));
-        return productsService.insertProduct(p);
+        return productsService.insertProduct(p,idCat);
     }
 
     // Borra un producto de una categoría
