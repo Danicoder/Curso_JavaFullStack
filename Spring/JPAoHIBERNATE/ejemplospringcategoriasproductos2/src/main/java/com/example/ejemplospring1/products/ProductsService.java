@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.ejemplospring1.categories.CategoriesRepository;
-import com.example.ejemplospring1.categories.pproyecciones.CategoryWithoutProducts;
+import com.example.ejemplospring1.products.Proyecciones.ProductWithCategory;
+import com.example.ejemplospring1.products.Proyecciones.ProductWithOutCategory;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,20 +17,18 @@ public class ProductsService {
     private final ProductsRepository prodRepository;
     private final CategoriesRepository catRepository;
 
-    public List<Product> getProducts(int idCat) {
+    public List<ProductWithOutCategory> getProducts(int idCat) {
         return prodRepository.findByCategory(idCat);
     }
 
-    public Product getProduct(int idProd) {
-        Product p = prodRepository.findById(idProd).orElseThrow(
-            () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Producto no encontrado") 
+    public ProductWithCategory getProduct(int idProd) {
+        return prodRepository.findByProductById(idProd).orElseThrow(
+            () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Producto no encontrado") 
         );
-        CategoryWithoutProducts c = catRepository.findCategoryById(p.getIdCategory());
-        return new ProductWithCategory(p, c);
     }
 
     public Product insertProduct(Product p) {
-        if(!catRepository.existsById(p.getIdCategory())) {
+        if(!catRepository.existsById(p.getCategory().getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria no encontrada");
         }
         return prodRepository.save(p);

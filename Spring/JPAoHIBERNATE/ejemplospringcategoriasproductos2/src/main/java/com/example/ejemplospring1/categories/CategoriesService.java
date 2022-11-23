@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.ejemplospring1.categories.pproyecciones.CategoryWithoutProducts;
+import com.example.ejemplospring1.categories.proyecciones.CategoryWithoutProducts;
 
 import lombok.RequiredArgsConstructor;
 

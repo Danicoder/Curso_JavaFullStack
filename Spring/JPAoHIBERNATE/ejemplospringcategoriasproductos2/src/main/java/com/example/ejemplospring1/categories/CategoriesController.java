@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.ejemplospring1.categories.pproyecciones.CategoryWithoutProducts;
+import com.example.ejemplospring1.categories.proyecciones.CategoryWithoutProducts;
 import com.example.ejemplospring1.products.Product;
 import com.example.ejemplospring1.products.ProductsService;
+import com.example.ejemplospring1.products.Proyecciones.ProductWithOutCategory;
 
 import lombok.RequiredArgsConstructor;
 
@@ -59,14 +60,14 @@ public class CategoriesController {
 
     // Devuelve todos los productos de una categoría
     @GetMapping("/{idCat}/products")
-    public List<Product> getProducts( @PathVariable int idCat) {
+    public List<ProductWithOutCategory> getProducts( @PathVariable int idCat) {
         return productsService.getProducts(idCat);
     }
 
     // Inserta un producto en una categoría
     @PostMapping("/{idCat}/products")
     public Product insertProduct(@RequestBody Product p, @PathVariable int idCat) {
-        p.setIdCategory(idCat);
+        p.setCategory(getCategory(idCat));
         return productsService.insertProduct(p);
     }
 
