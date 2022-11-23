@@ -44,7 +44,7 @@ public class EventosController {
     }
 
     
-    @PostMapping("{id}/asistir")
+    @PostMapping("{idEvento}/asistir")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void ASISTIReVENTO(@PathVariable int idEvento, @RequestBody AsisitirEventoDTO asistirDTO){
         eventosService.asistirEvento(idEvento, asistirDTO.getUsuario());
