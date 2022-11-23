@@ -2,6 +2,7 @@ package com.example.ejemplospring1.products;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -28,7 +29,7 @@ public class Product {
     private double price;
 
     //unos a muchos
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category")//nombre CA
     private Category category;
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.ejemplospring1.categories.CategoriesRepository;
+import com.example.ejemplospring1.categories.Category;
 import com.example.ejemplospring1.products.Proyecciones.ProductWithCategory;
 import com.example.ejemplospring1.products.Proyecciones.ProductWithOutCategory;
 
@@ -27,10 +28,12 @@ public class ProductsService {
         );
     }
 
-    public Product insertProduct(Product p) {
-        if(!catRepository.existsById(p.getCategory().getId())) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria no encontrada");
-        }
+    public Product insertProduct(Product p, int idCat) {
+        Category c = catRepository.findById(idCat).orElseThrow(
+            () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria no encontrada")
+        );
+        c.setProducts(null);
+        p.setCategory(c);
         return prodRepository.save(p);
     }
 
