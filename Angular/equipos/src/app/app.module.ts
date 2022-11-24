@@ -9,6 +9,7 @@ import { FormularioEquipoComponent } from './formulario-equipo/formulario-equipo
 import { ListadoEquiposComponent } from './listado-equipos/listado-equipos.component';
 import { FormularioJugadorComponent } from './formulario-jugador/formulario-jugador.component';
 import { ListadoJugadoresComponent } from './listado-jugadores/listado-jugadores.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 //para el navegador
 const APP_ROUTES: Route[] = [
@@ -31,7 +32,8 @@ const APP_ROUTES: Route[] = [
     RouterModule.forRoot(APP_ROUTES, { initialNavigation: 'enabledBlocking', onSameUrlNavigation: 'reload' }),
     BrowserModule,
     HttpClientModule,
-    FormsModule],
+    FormsModule,
+    ImageCropperModule],
   providers: [],
   bootstrap: [AppComponent],
 })
