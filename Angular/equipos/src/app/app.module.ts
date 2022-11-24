@@ -2,23 +2,37 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { ListadoEquiposComponent } from './listado-equipos/listado-equipos.component';
-import { FormularioEquipoComponent } from './formulario-equipo/formulario-equipo.component';
 import { FormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { FormularioEquipoComponent } from './formulario-equipo/formulario-equipo.component';
+import { ListadoEquiposComponent } from './listado-equipos/listado-equipos.component';
+import { FormularioJugadorComponent } from './formulario-jugador/formulario-jugador.component';
+import { ListadoJugadoresComponent } from './listado-jugadores/listado-jugadores.component';
+
+//para el navegador
+const APP_ROUTES: Route[] = [
+  { path: '', component: ListadoEquiposComponent },//si no encuetra nada muestra la lista de equipos
+  { path: 'listado-equipos', component: ListadoEquiposComponent },
+  { path: 'insertar-equipo', component: FormularioEquipoComponent },
+  { path: 'listado-jugador', component: ListadoJugadoresComponent },
+  { path: 'insertar-jugador', component: FormularioJugadorComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListadoEquiposComponent,
-    FormularioEquipoComponent
+    FormularioEquipoComponent,
+    FormularioJugadorComponent,
+    ListadoJugadoresComponent,
   ],
   imports: [
+    RouterModule.forRoot(APP_ROUTES, { initialNavigation: 'enabledBlocking', onSameUrlNavigation: 'reload' }),
     BrowserModule,
     HttpClientModule,
-    FormsModule
-  ],
+    FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

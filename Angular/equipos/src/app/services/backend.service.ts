@@ -10,6 +10,7 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
+  /*Tabla de equipos*/
   getEquipos() {
     return this.http.get(`${SERVER}equipos`)
   }
@@ -18,5 +19,15 @@ export class BackendService {
   }
   deleteEquipos(id:number){
     return this.http.delete(`${SERVER}equipos/${id}`)
+  }
+  /*Tabla de jugadores*/
+  getJugadores() {
+    return this.http.get(`${SERVER}jugadores`)
+  }
+  postJugadores(jugador:any){
+    return this.http.post(`${SERVER}jugadores`,jugador)
+  }
+  deleteJugadores(id:number){
+    return this.http.delete(`${SERVER}jugadores/${id}`)
   }
 }

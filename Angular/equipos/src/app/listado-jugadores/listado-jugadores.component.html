@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Dorsal</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Sueldo</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr *ngFor="let jugador of jugadores">
+      <th>{{jugador.numero}}</th>
+      <td>{{jugador.nombre}}</td>
+      <td>{{jugador.sueldo}}</td>
+    </tr>
+  </tbody>
+</table>

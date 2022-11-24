@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.data.jdbc.core.JdbcAggregateTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +34,9 @@ public class JugadoresService {
 
     public void delete(int id) {
         jugadoresRepository.deleteById(id);
+    }
+    public List<Jugador> GetJugadores() {
+        return (List<Jugador>) jugadoresRepository.findAll();
     }
 
 }
