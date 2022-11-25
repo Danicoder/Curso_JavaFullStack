@@ -43,10 +43,15 @@ public class EventosController {
         eventosService.delete(id);
     }
 
-    
+    /*
     @PostMapping("{idEvento}/asistir")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void ASISTIReVENTO(@PathVariable int idEvento, @RequestBody AsisitirEventoDTO asistirDTO){
+    public void asistirEvento(@PathVariable int idEvento, @RequestBody AsisitirEventoDTO asistirDTO){
         eventosService.asistirEvento(idEvento, asistirDTO.getUsuario());
+    }*/
+    @DeleteMapping("/{idEvento}/asistir/{idUsuario}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void asistirEvento(@PathVariable int idEvento, @PathVariable int idUsuario) {
+        eventosService.dejarAsistirEvento(idEvento, idUsuario);
     }
 }

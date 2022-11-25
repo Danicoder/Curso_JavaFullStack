@@ -12,21 +12,25 @@ import com.muchosamuchos.relaciones.usuarios.Usuario;
 import com.muchosamuchos.relaciones.usuarios.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
-@Service @RequiredArgsConstructor
+
+@Service
+@RequiredArgsConstructor
 public class EventoService {
     private final EventosRepository eventosRepository;
     private final UsuarioRepository usuarioRepository;
-    
+
     public List<EventoSinUsuarios> getAll() {
         return eventosRepository.findBy();
     }
+
     public EventoConUsuarios getById(int id) {
         EventoConUsuarios e = eventosRepository.findEventoById(id);
-        if(e == null){
+        if (e == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria no encontrada");
         }
         return e;
     }
+
     public Evento insert(Evento e) {
         e.setId(0);
         return eventosRepository.save(e);
@@ -38,11 +42,19 @@ public class EventoService {
 
     public void asistirEvento(int idEvento, int idUsuario) {
         Evento e = eventosRepository.findById(idEvento)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento no encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento no encontrado"));
         Usuario u = usuarioRepository.findById(idUsuario)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
         e.getUsuarios().add(u);
         u.getEventos().add(e);
+        eventosRepository.save(e);
+    }
+
+    public void dejarAsistirEvento(int idEvento,int idUsuario){
+        Evento e = eventosRepository.findById(idEvento).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+        Usuario u = usuarioRepository.findById(idEvento).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+        e.getUsuarios().remove(u);
+        u.getEventos().remove(e);
         eventosRepository.save(e);
     }
 }
