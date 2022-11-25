@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.muchosamuchos.relaciones.eventos.dto.EventoInsertDto;
 import com.muchosamuchos.relaciones.usuarios.Usuario;
 
 import lombok.AllArgsConstructor;
@@ -30,4 +31,12 @@ public class Evento {
 
     @ManyToMany(mappedBy = "eventos")//indicamos que la relación ya esta mapeada en Usuario
     private List<Usuario> usuarios;
+
+    //apartir de un objeto genere otro de otra clase, como un cosntructor de copia
+    public Evento(EventoInsertDto dto) {
+        this.titulo = getTitulo();
+        this.descripcion = getDescripcion();
+        this.precio = getPrecio();
+        this.fecha = getFecha();
+    }
 }

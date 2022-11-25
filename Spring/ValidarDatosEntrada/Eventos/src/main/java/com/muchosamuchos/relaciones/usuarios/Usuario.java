@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.muchosamuchos.relaciones.eventos.Evento;
+import com.muchosamuchos.relaciones.usuarios.dto.UsuarioInsertDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,4 +46,9 @@ public class Usuario {
         joinColumns = @JoinColumn(name = "usuario"), //columna o colunas que hace referencia a la tabla actual en la clase en la que estoy
         inverseJoinColumns = @JoinColumn(name = "evento")) //Columna que hace de CA
     private List<Evento> eventos;
+
+    public Usuario(UsuarioInsertDto dto){
+        this.nombre = getNombre();
+        this.correo = getCorreo();
+    }
 }

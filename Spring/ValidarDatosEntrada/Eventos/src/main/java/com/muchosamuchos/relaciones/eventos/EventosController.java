@@ -2,6 +2,8 @@ package com.muchosamuchos.relaciones.eventos;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.muchosamuchos.relaciones.eventos.Proyecciones.EventoConUsuarios;
 import com.muchosamuchos.relaciones.eventos.Proyecciones.EventoSinUsuarios;
-import com.muchosamuchos.relaciones.eventos.dto.AsisitirEventoDTO;
+import com.muchosamuchos.relaciones.eventos.dto.EventoInsertDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,8 +36,8 @@ public class EventosController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Evento insert(@RequestBody Evento e) {
-        return eventosService.insert(e);
+    public Evento insert(@RequestBody @Valid EventoInsertDto evDto) {
+        return eventosService.insert(new Evento(evDto));
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

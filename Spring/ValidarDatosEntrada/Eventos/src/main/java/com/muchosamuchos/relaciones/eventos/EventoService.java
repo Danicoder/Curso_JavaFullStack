@@ -31,9 +31,8 @@ public class EventoService {
         return e;
     }
 
-    public Evento insert(Evento e) {
-        e.setId(0);
-        return eventosRepository.save(e);
+    public Evento insert(Evento evento) {
+        return eventosRepository.save(evento);
     }
 
     public void delete(int idEvento) {

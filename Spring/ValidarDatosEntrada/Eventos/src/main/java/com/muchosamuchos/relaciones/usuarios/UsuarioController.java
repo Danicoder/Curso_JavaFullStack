@@ -2,6 +2,8 @@ package com.muchosamuchos.relaciones.usuarios;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.muchosamuchos.relaciones.usuarios.Proyecciones.UsuarioConEventos;
 import com.muchosamuchos.relaciones.usuarios.Proyecciones.UsuarioSinEventos;
+import com.muchosamuchos.relaciones.usuarios.dto.UsuarioInsertDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,8 +36,8 @@ public class UsuarioController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario insert(@RequestBody Usuario e) {
-        return usuarioService.insert(e);
+    public Usuario insert(@RequestBody @Valid UsuarioInsertDto dto) {
+        return usuarioService.insert(new Usuario(dto));
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
