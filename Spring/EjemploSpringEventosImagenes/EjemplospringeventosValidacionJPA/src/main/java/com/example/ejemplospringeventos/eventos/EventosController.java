@@ -1,4 +1,6 @@
-package com.muchosamuchos.relaciones.eventos;
+package com.example.ejemplospringeventos.eventos;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -12,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.muchosamuchos.relaciones.eventos.dto.EventoInsertDto;
-import com.muchosamuchos.relaciones.eventos.dto.RespuestaEventosDto;
+import com.example.ejemplospringeventos.eventos.dto.AsistirEventoDto;
+import com.example.ejemplospringeventos.eventos.dto.EventoInsertDto;
+import com.example.ejemplospringeventos.eventos.dto.RespuestaEventoDto;
+import com.example.ejemplospringeventos.eventos.dto.RespuestaEventosDto;
+import com.example.ejemplospringeventos.eventos.proyecciones.EventoConUsuarios;
+import com.example.ejemplospringeventos.eventos.proyecciones.EventoSinUsuarios;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,33 +27,36 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/eventos")
 public class EventosController {
-    private final EventoService eventosService;
+    private final EventosService eventosService;
 
     @GetMapping
     public RespuestaEventosDto getAll() {
         return new RespuestaEventosDto(eventosService.getAll());
     }
+
     @GetMapping("/{id}")
-    public RespuestaEventosDto getById(@PathVariable int id) {
-        return new RespuestaEventosDto(eventosService.getById(id));
+    public RespuestaEventoDto getById(@PathVariable int id) {
+        return new RespuestaEventoDto(eventosService.getById(id));
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Evento insert(@RequestBody @Valid EventoInsertDto evDto) {
         return eventosService.insert(new Evento(evDto));
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         eventosService.delete(id);
     }
 
-    /*
-    @PostMapping("{idEvento}/asistir")
+    @PostMapping("/{idEvento}/asistir")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void asistirEvento(@PathVariable int idEvento, @RequestBody AsisitirEventoDTO asistirDTO){
-        eventosService.asistirEvento(idEvento, asistirDTO.getUsuario());
-    }*/
+    public void asistirEvento(@PathVariable int idEvento, @RequestBody @Valid AsistirEventoDto asistirDto) {
+        eventosService.asistirEvento(idEvento, asistirDto.getUsuario());
+    }
+
     @DeleteMapping("/{idEvento}/asistir/{idUsuario}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void asistirEvento(@PathVariable int idEvento, @PathVariable int idUsuario) {

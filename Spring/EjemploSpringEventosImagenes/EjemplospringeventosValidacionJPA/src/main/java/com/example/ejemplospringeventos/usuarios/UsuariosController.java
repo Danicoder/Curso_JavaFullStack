@@ -1,4 +1,6 @@
-package com.muchosamuchos.relaciones.usuarios;
+package com.example.ejemplospringeventos.usuarios;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -12,36 +14,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.muchosamuchos.relaciones.usuarios.dto.RespuestaUsuariosDto;
-import com.muchosamuchos.relaciones.usuarios.dto.RespuestaUsuarioDto;
-import com.muchosamuchos.relaciones.usuarios.dto.UsuarioInsertDto;
-
+import com.example.ejemplospringeventos.usuarios.dto.RespuestaUsuarioDto;
+import com.example.ejemplospringeventos.usuarios.dto.RespuestaUsuariosDto;
+import com.example.ejemplospringeventos.usuarios.dto.UsuarioInsertDto;
+import com.example.ejemplospringeventos.usuarios.proyecciones.UsuarioConEventos;
+import com.example.ejemplospringeventos.usuarios.proyecciones.UsuarioSinEventos;
 
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("/usuarios")
+
 @RestController
+@RequestMapping("/usuarios")
 @RequiredArgsConstructor
-public class UsuarioController {
-    private final UsuarioService usuarioService;
+public class UsuariosController {
+    private final UsuariosService usuariosService;
 
     @GetMapping
     public RespuestaUsuariosDto getAll() {
-        return new RespuestaUsuariosDto(usuarioService.getById(0));
+        return new RespuestaUsuariosDto(usuariosService.getAll());
     }
+
     @GetMapping("/{id}")
     public RespuestaUsuarioDto getById(@PathVariable int id) {
-        return new RespuestaUsuarioDto(usuarioService.getById(id));
+        return new RespuestaUsuarioDto(usuariosService.getById(id));
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario insert(@RequestBody @Valid UsuarioInsertDto dto) {
-        return usuarioService.insert(new Usuario(dto));
+        return usuariosService.insert(new Usuario(dto));
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable int id) {
-        usuarioService.delete(id);
+    public void delete(@PathVariable int id) {
+        usuariosService.delete(id);
     }
 }

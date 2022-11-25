@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import com.muchosamuchos.relaciones.usuarios.Proyecciones.UsuarioConEventos;
 import com.muchosamuchos.relaciones.usuarios.Proyecciones.UsuarioSinEventos;
 
