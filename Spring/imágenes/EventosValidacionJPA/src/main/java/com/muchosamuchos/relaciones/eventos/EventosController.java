@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.muchosamuchos.relaciones.eventos.dto.EventoInsertDto;
 import com.muchosamuchos.relaciones.eventos.dto.RespuestaEventosDto;
+import com.muchosamuchos.relaciones.eventos.dto.RespuestaEventoDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,8 +29,8 @@ public class EventosController {
         return new RespuestaEventosDto(eventosService.getAll());
     }
     @GetMapping("/{id}")
-    public RespuestaEventosDto getById(@PathVariable int id) {
-        return new RespuestaEventosDto(eventosService.getById(id));
+    public RespuestaEventoDto getById(@PathVariable int id) {
+        return new RespuestaEventoDto(eventosService.getById(id));
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

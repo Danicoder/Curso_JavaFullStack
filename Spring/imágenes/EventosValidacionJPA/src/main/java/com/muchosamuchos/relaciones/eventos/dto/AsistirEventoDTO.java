@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 Las DTO se crea para una clase porque esta no coincide con lo que tenemos*/
 
 @Data @NoArgsConstructor
-public class AsisitirEventoDTO {
+public class AsistirEventoDTO {
     private int usuario;
 }
