@@ -10,6 +10,7 @@ import com.example.ejemplospringeventos.eventos.proyecciones.EventoConUsuarios;
 import com.example.ejemplospringeventos.eventos.proyecciones.EventoSinUsuarios;
 import com.example.ejemplospringeventos.usuarios.Usuario;
 import com.example.ejemplospringeventos.usuarios.UsuariosRepository;
+import com.example.ejemplospringeventos.utils.ImageUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class EventosService {
     private final EventosRepository eventosRepository;
     private final UsuariosRepository usuariosRepository;
+    private final ImageUtils imageUtils;
 
     public List<EventoSinUsuarios> getAll() {
         return eventosRepository.findBy();
@@ -32,8 +34,8 @@ public class EventosService {
     }
 
     public Evento insert(Evento e) {
-        if(e.getImagen()) != null){
-            e.getImagen(imageUtils.saveImageBase64("eventos",e.getImagen()))
+        if(e.getImagenes() != null){
+            e.getImagenes(imageUtils.saveImageBase64("eventos",e.getImagenes()));
         }
         return eventosRepository.save(e);
     }
