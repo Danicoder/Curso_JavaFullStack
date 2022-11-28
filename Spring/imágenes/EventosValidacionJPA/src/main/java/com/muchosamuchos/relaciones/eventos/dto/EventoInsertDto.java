@@ -25,4 +25,5 @@ public class EventoInsertDto {
     //@NonNull(message = "La fecha no debe estar vacía")
     @Future(message = "La fecha no debe ser posterior a hoy")
     private LocalDate fecha;
+    private String imagen;
 }

@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RelacionesApplication {
+public class EventosValidacionJPA{
 
 	public static void main(String[] args) {
-		SpringApplication.run(RelacionesApplication.class, args);
+		SpringApplication.run(EventosValidacionJPA.class, args);
 	}
 
 }

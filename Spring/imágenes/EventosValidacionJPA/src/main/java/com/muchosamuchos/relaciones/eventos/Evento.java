@@ -28,6 +28,7 @@ public class Evento {
     private String descripcion;
     private double precio;
     private LocalDate fecha;
+    private String imagen;
 
     @ManyToMany(mappedBy = "eventos")//indicamos que la relación ya esta mapeada en Usuario
     private List<Usuario> usuarios;
@@ -38,5 +39,6 @@ public class Evento {
         this.descripcion = getDescripcion();
         this.precio = getPrecio();
         this.fecha = getFecha();
+        this.imagen = getImagen();
     }
 }

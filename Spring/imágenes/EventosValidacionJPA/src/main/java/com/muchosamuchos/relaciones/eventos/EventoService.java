@@ -10,6 +10,7 @@ import com.muchosamuchos.relaciones.eventos.Proyecciones.EventoConUsuarios;
 import com.muchosamuchos.relaciones.eventos.Proyecciones.EventoSinUsuarios;
 import com.muchosamuchos.relaciones.usuarios.Usuario;
 import com.muchosamuchos.relaciones.usuarios.UsuarioRepository;
+import com.muchosamuchos.relaciones.utils.ImageUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class EventoService {
     private final EventosRepository eventosRepository;
     private final UsuarioRepository usuarioRepository;
+    private final ImageUtils imageUtils;
 
     public List<EventoSinUsuarios> getAll() {
         return eventosRepository.findBy();
@@ -32,6 +34,11 @@ public class EventoService {
     }
 
     public Evento insert(Evento evento) {
+        if(evento.getImagen() != null){
+            //sustituye la imagen en base 64, se guarda en un archivo, me devuelve la ruta y
+            //en el evento del campo imagen guardo la ruta al archivo
+            evento.setImagen(imageUtils.saveImageBase64("eventos", evento.getImagen()));
+        }
         return eventosRepository.save(evento);
     }
 
