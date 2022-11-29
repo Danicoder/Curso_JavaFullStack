@@ -12,6 +12,10 @@
 
   <img [src]="croppedImage" width="200" />
 
+  <div *ngIf="croppedImage" class="text-center">
+    <img [src]="croppedImage" width="150" class="img-thumbnail mt-2" />
+  </div>
+
   <br /><br />
 </div>
 <div class="mb-3">
@@ -37,4 +41,3 @@
 <button type="button" class="btn btn-primary" (click)="postEquipo()">
   Enviar
 </button>
-
